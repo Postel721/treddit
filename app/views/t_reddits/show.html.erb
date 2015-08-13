@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @t_reddit.title %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @t_reddit.author %>
+</p>
+
+<p>
+  <strong>Blog entry:</strong>
+  <%= @t_reddit.blog_entry %>
+</p>
+
+<%= link_to 'Edit', edit_t_reddit_path(@t_reddit) %> |
+<%= link_to 'Back', t_reddits_path %>

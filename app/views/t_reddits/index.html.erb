@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing T Reddits</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Blog entry</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @t_reddits.each do |t_reddit| %>
+      <tr>
+        <td><%= t_reddit.title %></td>
+        <td><%= t_reddit.author %></td>
+        <td><%= t_reddit.blog_entry %></td>
+        <td><%= link_to 'Show', t_reddit %></td>
+        <td><%= link_to 'Edit', edit_t_reddit_path(t_reddit) %></td>
+        <td><%= link_to 'Destroy', t_reddit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New T reddit', new_t_reddit_path %>
