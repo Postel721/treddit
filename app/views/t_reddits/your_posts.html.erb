@@ -1,27 +1,21 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing T Reddits</h1>
+<h1>All of <%= current_user.username %>'s Posts</h1>
 
 <div class="row">
-  <% @t_reddits.each do |t_reddit|%>
+  <% current_user.t_reddits.each do |t_reddit|%>
     <div class="col-md-6">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <%= link_to t_reddit.title, t_reddit%>
+          <%= link_to t_reddit.title, t_reddit.user.username %>
         </div>
         <div class="panel-body">
-          by <%= link_to t_reddit.user.username, user_profile_path(id: t_reddit.user.id) %><br />
+          by <%= t_reddit.user.username %><br />
           <p><%= t_reddit.blog_entry[0..250] %>...[<%= link_to "READ MORE", t_reddit %>]</p>
         </div>
-        <div class="panel-footer"> 
-          <% if t_reddit.user.id == current_user.id %>
+        <div class="panel-footer">
           <%= link_to 'Edit', edit_t_reddit_path(t_reddit),
             class: "btn btn-warning" %>
           <%= link_to 'Destroy', t_reddit, method: :delete,
           data: {confirm: 'Are you sure?'}, class: "btn btn-danger" %>
-          <% else %>
-          <p>Comments: <%= t_reddit.comments.length %></p>
-          <% end %>
         </div>
       </div>
     </div>

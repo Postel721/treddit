@@ -1,19 +1,44 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Title:</strong>
+  <div class="panel panel-default">
+  	<div class="panel-heading">
   <%= @t_reddit.title %>
-</p>
+</div>
+<div class="panel-body">
+	<p>by <%= @t_reddit.user.username %></p>
+	<p><em>Posted at <%= @t_reddit.created_at.strftime("%I:%M%p on %m/%d/%Y") %></em></p>
+	<p>
+		<%= @t_reddit.blog_entry %>
+	</p>
+</div>
+	<div class="panel-footer">
+    <% if @t_reddit.user.id == current_user.id%>
+	 <%= link_to 'Edit', edit_t_reddit_path(@t_reddit), class: "btn btn-warning"%>
+    <% end %>
+	 <%= link_to 'Back', t_reddits_path, class: "btn btn-info" %>
+	</div>
+<div>
 
-<p>
-  <strong>Author:</strong>
-  <%= @t_reddit.author %>
-</p>
-
-<p>
-  <strong>Blog entry:</strong>
-  <%= @t_reddit.blog_entry %>
-</p>
 
 <%= link_to 'Edit', edit_t_reddit_path(@t_reddit) %> |
-<%= link_to 'Back', t_reddits_path %>
+<%= link_to 'Back', t_reddit_path %>
+<h4> Make A Comment </h4>
+<p>
+	<%= render 'comments/form' %>
+</p>
+<div>
+
+<div>
+	<h4>Comments</h4>
+    <% @t_reddit.comments.each do |comment| %>
+        <div class="panel panel-primary">
+            <div class="panel-body">
+              <p>by <strong><%= @t_reddit.user.username %></strong>
+                <p>by<strong><%= comment.user.username %> said: </strong></p>
+                <p><em>Posted at<%= @t_reddit.created_at.strftime("%I:%M%p on %m/%d/%Y") %><em></p>
+                <p><%= comment.comment_entry %></p>
+            </div>
+        </div>
+    <% end %>
+</div>

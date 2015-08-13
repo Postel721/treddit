@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
+  devise_for :users
+  resources :comments
   resources :t_reddits
+  
 
   root 't_reddits#home'
+  
+
+  get 'your_posts' => 't_reddits#your_posts'
+  get 'user_profile' => 't_reddits#user_profile'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
