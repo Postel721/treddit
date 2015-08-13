@@ -6,7 +6,9 @@ class TRedditsController < ApplicationController
   def index
     @t_reddits = TReddit.all
   end
-
+  def home
+    @t_reddits = TReddit.all
+  end
   # GET /t_reddits/1
   # GET /t_reddits/1.json
   def show

@@ -1,0 +1,23 @@
+<!-- home.html.erb -->
+<div class="row">
+	<div class="col-md-9 main">
+		<div class="row post_kepper">
+			<% @t_reddits.each do |t_reddit| %>
+			<div class="col-md-12 kept_posts">
+				<div class="panel panel-default content">
+					<h4><%= link_to t_reddit.title, t_reddit %></h4>
+					<h5>submitted by <%= t_reddit.author %></h5>
+					<h6>this post has 00 comments</h6>
+				</div><!-- end kept_posts -->
+			</div><!-- end col-8 -->
+			 <% end %>
+		</div><!-- end row post_keeper -->
+	</div><!-- end main -->
+	<div class="col-md-3 side">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<h5>sidebar goes here</h5>
+			</div><!-- end panel-body -->
+		</div><!-- end panel -->
+	</div><!-- end side -->
+</div><!-- end row -->
