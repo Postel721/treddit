@@ -6,12 +6,20 @@ class TRedditsController < ApplicationController
   def index
     @t_reddits = TReddit.all
   end
-  def home
-    @t_reddits = TReddit.all
+  def your_posts
+    system ('YOU GOT MAIL Felicia')
   end
+  def user_profile
+    @user = User.find(params[:id])
+  end
+  def home
+   @t_reddits = TReddit.all
+  end
+
   # GET /t_reddits/1
   # GET /t_reddits/1.json
   def show
+    @comment = Comment.new
   end
 
   # GET /t_reddits/new
@@ -71,6 +79,6 @@ class TRedditsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def t_reddit_params
-      params.require(:t_reddit).permit(:title, :author, :blog_entry)
+      params.require(:t_reddit).permit(:title, :author, :blog_entry, :user_id)
     end
 end
